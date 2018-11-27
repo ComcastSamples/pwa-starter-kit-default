@@ -14,6 +14,8 @@ import { PageViewElement } from './page-view-element.js';
 // These are the shared styles needed by this element.
 import { SharedStyles } from './shared-styles.js';
 
+import { closeIcon } from './my-icons.js';
+
 class MyView4 extends PageViewElement {
   render() {
     return html`
@@ -21,6 +23,7 @@ class MyView4 extends PageViewElement {
       <section>
         <h2>New View!</h2>
         <p>See what is like to create your own page.</p>
+        <p>Here's a close button: <button title="close">${closeIcon}</button></p>
       </section>
     `
   }
