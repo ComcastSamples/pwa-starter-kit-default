@@ -156,9 +156,9 @@ class MyApp extends connect(store)(LitElement) {
         text-align: center;
       }
 
-      /* Wide layout: when the viewport width is bigger than 460px, layout
+      /* Wide layout: when the viewport width is bigger than 500px, layout
       changes to a wide layout. */
-      @media (min-width: 460px) {
+      @media (min-width: 500px) {
         .toolbar-list {
           display: block;
         }
@@ -244,7 +244,7 @@ class MyApp extends connect(store)(LitElement) {
   firstUpdated() {
     installRouter((location) => store.dispatch(navigate(decodeURIComponent(location.pathname))));
     installOfflineWatcher((offline) => store.dispatch(updateOffline(offline)));
-    installMediaQueryWatcher(`(min-width: 460px)`,
+    installMediaQueryWatcher(`(min-width: 500px)`,
         () => store.dispatch(updateDrawerState(false)));
   }
 
