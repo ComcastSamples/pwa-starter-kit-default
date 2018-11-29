@@ -59,6 +59,16 @@ class MyApp extends connect(store)(LitElement) {
         --app-drawer-selected-color: #78909C;
       }
 
+      :host(.dark-theme) {
+        /* This is the dark theme */
+        --app-primary-color: yellow;
+        --app-secondary-color: white;
+        --app-text-color: #293237;
+        --app-dark-text-color: #E91E63;
+        --app-header-background-color: black;
+        --app-header-text-color: var(--app-secondary-color);
+      }
+
       app-header {
         position: fixed;
         top: 0;
@@ -257,6 +267,8 @@ class MyApp extends connect(store)(LitElement) {
         // This object also takes an image property, that points to an img src.
       });
     }
+
+    this.classList.toggle('dark-theme', this._page === 'view4');
   }
 
   _menuButtonClicked() {
