@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
+export const RESET = 'RESET';
 
 export const increment = () => {
   return {
@@ -20,5 +21,11 @@ export const increment = () => {
 export const decrement = () => {
   return {
     type: DECREMENT
+  };
+};
+
+export const reset = () => {
+  return {
+    type: RESET
   };
 };

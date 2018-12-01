@@ -8,7 +8,7 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-import { INCREMENT, DECREMENT } from '../actions/counter.js';
+import { INCREMENT, DECREMENT, RESET } from '../actions/counter.js';
 
 const INITIAL_STATE = {
   clicks: 0,
@@ -26,6 +26,11 @@ const counter = (state = INITIAL_STATE, action) => {
       return {
         clicks: state.clicks + 1,
         value: state.value - 1
+      };
+    case RESET:
+      return {
+        clicks: 0,
+        value: 0
       };
     default:
       return state;
