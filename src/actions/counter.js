@@ -11,21 +11,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
 export const RESET = 'RESET';
+export const DOUBLE_INCREMENT = 'DOUBLE_INCREMENT';
 
-export const increment = () => {
-  return {
-    type: INCREMENT
-  };
+export const increment = () => (dispatch, getState) => {
+  const state = getState();
+  const howMuch = state.counter.doubleIncrement ? 2 : 1;
+  dispatch({
+    type: INCREMENT,
+    howMuch,
+  });
 };
 
-export const decrement = () => {
-  return {
-    type: DECREMENT
-  };
+export const decrement = () => (dispatch, getState) => {
+  const state = getState();
+  const howMuch = state.counter.doubleIncrement ? 2 : 1;
+  dispatch({
+    type: DECREMENT,
+    howMuch,
+  });
 };
 
 export const reset = () => {
   return {
     type: RESET
+  };
+};
+
+export const doubleIncrement = (doubleIncrement) => {
+  return {
+    type: DOUBLE_INCREMENT,
+    doubleIncrement
   };
 };

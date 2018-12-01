@@ -16,7 +16,7 @@ import { connect } from 'pwa-helpers/connect-mixin.js';
 import { store } from '../store.js';
 
 // These are the actions needed by this element.
-import { increment, decrement, reset } from '../actions/counter.js';
+import { increment, decrement, reset, doubleIncrement } from '../actions/counter.js';
 
 // We are lazy loading its reducer.
 import counter from '../reducers/counter.js';
@@ -47,10 +47,11 @@ class MyView2 extends connect(store)(PageViewElement) {
       </section>
       <section>
         <p>
-          <counter-element value="${this._value}" clicks="${this._clicks}"
+          <counter-element value="${this._value}" clicks="${this._clicks}" doubleIncrement="${this._doubleIncrement}"
               @counter-incremented="${this._counterIncremented}"
               @counter-decremented="${this._counterDecremented}"
-              @counter-reset="${this._counterReset}">
+              @counter-reset="${this._counterReset}"
+              @counter-double-increment="${this._counterDoubleIncrement}">
           </counter-element>
         </p>
       </section>
@@ -75,10 +76,15 @@ class MyView2 extends connect(store)(PageViewElement) {
     store.dispatch(reset());
   }
 
+  _counterDoubleIncrement(event) {
+    store.dispatch(doubleIncrement(event.detail));
+  }
+
   // This is called every time something is updated in the store.
   stateChanged(state) {
     this._clicks = state.counter.clicks;
     this._value = state.counter.value;
+    this._doubleIncrement = state.counter.doubleIncrement;
   }
 }
 
